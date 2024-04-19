@@ -1,0 +1,65 @@
+
+
+.edit-button:hover {
+  background-color: #097799; 
+
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+.mat-cell button {
+  margin-right: 8px;
+}
+
+.mat-cell button.edit-button {
+  background-color: #3f51b5;
+  color: rgb(78, 11, 141);
+}
+
+.form-button:hover {
+  background-color: #1651a8;
+}
+.list-button:hover {
+  background-color: aqua;
+}
+.parent-container {
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.edit-icon {
+  color: #007bff; 
+
+}
+.delete-icon {
+  color: #dc3545; 
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-vehicle-container {
+  display: flex;
+  align-items: center;
+}
+
+.add-vehicle-button {
+  margin-left: auto;
+}
+
+.add-vehicle-button span {
+  margin-left: 5px; 
+}
+th{
+  background-color: black !important;
+  color: white;
+}

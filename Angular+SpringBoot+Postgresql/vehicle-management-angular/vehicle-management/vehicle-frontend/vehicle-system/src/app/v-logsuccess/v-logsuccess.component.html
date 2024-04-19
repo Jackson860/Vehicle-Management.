@@ -1,0 +1,29 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <a routerLink="/v-logsuccess" class="nav-link"
+      >Welcome to Vehicle Management</a
+    >
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="navigateToAddVehicle()">
+        Add Vehicle
+      </button>
+      <button mat-menu-item (click)="navigateToChangePassword()">
+        Change Password
+      </button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </mat-toolbar>
+</div>
+<br />
+<br />
+<br />
+
+<!-- <h3> {{ username }}</h3> -->
+
+<app-v-list></app-v-list>

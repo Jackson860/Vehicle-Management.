@@ -1,0 +1,124 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <a routerLink="/v-logsuccess" class="nav-link"
+      >Welcome to Vehicle Management</a
+    >
+    <span class="spacer"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <!-- <button mat-menu-item (click)="navigateToAddVehicle()">
+        Add Vehicle
+      </button>
+      <button mat-menu-item (click)="navigateToChangePassword()">
+        Change Password
+      </button> -->
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </mat-toolbar>
+</div>
+
+<div class="container form-container">
+  <h2 class="form-title">Enter Vehicle Details</h2>
+  <form class="form" (ngSubmit)="submitForm()">
+
+    <mat-form-field class="form-field">
+      <mat-label>Vehicle Reg Number</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="vehicleNum"
+        name="vehicleNum"
+        required
+      />
+      <mat-error *ngIf="!vehicleNum">Vehicle Number is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Vehicle Type</mat-label>
+      <mat-select
+        [(ngModel)]="vehicleType"
+        name="vehicle"
+        required
+        mat-select-trigger
+      >
+        <mat-option>-- Select Type --</mat-option>
+        <mat-option
+          *ngFor="let option of vehicleTypeOptions"
+          [value]="option"
+          >{{ option }}</mat-option
+        >
+      </mat-select>
+      <mat-error *ngIf="!vehicleType">Vehicle type is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Owner Name</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="ownerName"
+        name="ownerName"
+        required
+      />
+      <mat-error *ngIf="!ownerName">Owner name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Model Name</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="modelName"
+        name="modelName"
+        required
+      />
+      <mat-error *ngIf="!modelName">Model name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Colour</mat-label>
+      <mat-select
+        [(ngModel)]="colour"
+        name="colour"
+        required
+        mat-select-trigger
+      >
+        <mat-option>-- Select Colour --</mat-option>
+        <mat-option *ngFor="let option of colourOptions" [value]="option">{{
+          option
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="!colour">Colour is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Engine Type</mat-label>
+      <mat-select
+        [(ngModel)]="engineType"
+        name="engine"
+        required
+        mat-select-trigger
+      >
+        <mat-option>-- Select Type --</mat-option>
+        <mat-option
+          *ngFor="let option of engineTypeOptions"
+          [value]="option"
+          >{{ option }}</mat-option
+        >
+      </mat-select>
+      <mat-error *ngIf="!vehicleType">Vehicle type is required</mat-error>
+    </mat-form-field>
+ <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      class="submit-button"
+     
+    >
+      Submit
+    </button>
+  </form>
+</div>

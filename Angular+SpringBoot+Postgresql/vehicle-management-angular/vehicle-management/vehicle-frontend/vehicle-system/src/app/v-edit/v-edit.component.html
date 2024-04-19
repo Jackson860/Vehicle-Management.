@@ -1,0 +1,100 @@
+<div class="container">
+  <h2>Edit Vehicle Details</h2>
+  <form (ngSubmit)="submitForm()" #vehicleForm="ngForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Vehicle Reg Number</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="vehicleNum"
+        name="vehicleNum"
+        required
+        #vehicleNumInput="ngModel"
+      />
+      <mat-error *ngIf="vehicleNumInput.invalid && (vehicleNumInput.dirty || vehicleNumInput.touched)">
+        Vehicle Reg Number is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Vehicle Type</mat-label>
+      <mat-select
+        [(ngModel)]="vehicleType"
+        name="vehicle"
+        required
+        #vehicleTypeInput="ngModel"
+      >
+        <mat-option>-- Select Type --</mat-option>
+        <mat-option *ngFor="let option of vehicleTypeOptions" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="vehicleTypeInput.invalid && (vehicleTypeInput.dirty || vehicleTypeInput.touched)">
+        Vehicle Type is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Owner Name</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="ownerName"
+        name="ownerName"
+        required
+        #ownerNameInput="ngModel"
+      />
+      <mat-error *ngIf="ownerNameInput.invalid && (ownerNameInput.dirty || ownerNameInput.touched)">
+        Owner Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Model Name</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="modelName"
+        name="modelName"
+        required
+        #modelNameInput="ngModel"
+      />
+      <mat-error *ngIf="modelNameInput.invalid && (modelNameInput.dirty || modelNameInput.touched)">
+        Model Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Colour</mat-label>
+      <mat-select
+        [(ngModel)]="colour"
+        name="colour"
+        required
+        #colourInput="ngModel"
+      >
+        <mat-option>-- Select Colour --</mat-option>
+        <mat-option *ngFor="let option of colourOptions" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="colourInput.invalid && (colourInput.dirty || colourInput.touched)">
+        Colour is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Engine Type</mat-label>
+      <mat-select
+        [(ngModel)]="engineType"
+        name="engine"
+        required
+        #engineTypeInput="ngModel"
+      >
+        <mat-option>-- Select Type --</mat-option>
+        <mat-option *ngFor="let option of engineTypeOptions" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="engineTypeInput.invalid && (engineTypeInput.dirty || engineTypeInput.touched)">
+        Engine Type is required
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary" >Save Changes</button>
+  </form>
+</div>

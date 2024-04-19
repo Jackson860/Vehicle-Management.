@@ -1,0 +1,138 @@
+<div class="container">
+  <mat-tab-group #tabGroup dynamicHeight="">
+    <mat-tab label="SignIn">
+      <h3>Login</h3>
+      <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="loginUsername"
+              name="loginUsername"
+              required
+            />
+            <mat-icon matSuffix aria-label="Username icon" matTooltip="Username"
+              >person</mat-icon
+            >
+            <mat-error
+              *ngIf="
+                loginForm.controls['loginUsername']?.invalid &&
+                (loginForm.controls['loginUsername']?.dirty ||
+                  loginForm.controls['loginUsername']?.touched)
+              "
+            >
+              Username is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="{{ hideLoginPassword ? 'password' : 'text' }}"
+              [(ngModel)]="loginPassword"
+              name="loginPassword"
+              required
+            />
+            <mat-icon
+              matSuffix
+              (click)="togglePasswordVisibility()"
+              [attr.aria-label]="hideLoginPassword ? 'Show password' : 'Hide password'"
+              [matTooltip]="hideLoginPassword ? 'Show Password' : 'Hide Password'"
+            >
+              {{ hideLoginPassword ? "visibility_off" : "visibility" }}
+            </mat-icon>
+            <mat-error
+              *ngIf="
+                loginForm.controls['loginPassword']?.invalid &&
+                (loginForm.controls['loginPassword']?.dirty ||
+                  loginForm.controls['loginPassword']?.touched)
+              "
+            >
+              Password is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <br /><br /><br />
+        <button
+          mat-raised-button
+          type="submit"
+          color="primary"
+        >
+          Login
+        </button>
+        <mat-error>
+          <div *ngIf="loginFailed" class="error-message">
+            Incorrect username or password.
+          </div>
+        </mat-error>
+      </form>
+    </mat-tab>
+
+    <mat-tab label="SignUp">
+      <h3>Register</h3>
+      <form (ngSubmit)="register()" [formGroup]="registrationForm">
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" formControlName="username" required />
+            <mat-icon matSuffix aria-label="Username icon" matTooltip="Username"
+              >person</mat-icon
+            >
+            <mat-error *ngIf="registrationForm.get('username')?.errors?.['required']">
+              <span *ngIf="registrationForm.get('username')?.errors?.['required']">Username is required.</span>
+              <span *ngIf="registrationForm.get('username')?.errors?.['minlength']">Username must be at least 5 characters long.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" required />
+            <mat-icon matSuffix aria-label="Email icon" matTooltip="Email"
+              >email</mat-icon
+            >
+            <mat-error *ngIf="registrationForm.get('email')?.errors?.['required']">
+              <span *ngIf="registrationForm.get('email')?.errors?.['required']">Email is required.</span>
+              <span *ngIf="registrationForm.get('email')?.errors?.['email']">Please enter a valid email address.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="hideRegisterPassword ? 'password' : 'text'"
+              formControlName="password"
+              required
+            />
+            <mat-icon
+              matSuffix
+              (click)="toggleRegisterPasswordVisibility()"
+              [attr.aria-label]="
+                hideRegisterPassword ? 'Show password' : 'Hide password'
+              "
+              [matTooltip]="hideRegisterPassword ? 'Show Password' : 'Hide Password'"
+            >
+              {{ hideRegisterPassword ? "visibility_off" : "visibility" }}
+            </mat-icon>
+
+            <mat-error *ngIf="registrationForm.get('password')?.errors?.['required']">
+              <span *ngIf="registrationForm.get('password')?.errors?.['required']">Password is required.</span>
+              <span *ngIf="registrationForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button type="submit" color="primary">
+          Register
+        </button>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</div>
